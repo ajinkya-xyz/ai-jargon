@@ -29,3 +29,13 @@ Scope: concepts, patterns, protocols and practices only. No products, companies,
 2. In the repo, go to Settings → Pages → Source: **GitHub Actions**.
 3. Settings → Pages → Custom domain: `aijargon.wtf` (the build also writes a `CNAME` file).
 4. At your domain registrar, point DNS at GitHub Pages: four `A` records to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, plus `CNAME www` to `<username>.github.io`.
+
+## Deploy to Railway
+
+The `Dockerfile` builds the site and runs `serve.py`, a small standard-library server that serves `dist/` on `$PORT` (with the site's 404 page and cache headers). Railway picks the Dockerfile up automatically.
+
+```sh
+railway up --service ai-jargon      # from this folder, once linked with `railway init`/`railway link`
+```
+
+Live: https://ai-jargon-production.up.railway.app
